@@ -6,20 +6,27 @@ abstract class Model
 {
     public $id;
 
-    public const TABLE = 'news';
+    const TABLE = 'news';
 
     /**
      * Возвращает все записи
      *
      * @return array
      */
-    public static function findAll()
-    {
-        $db = new Db();
-        $sql = 'SELECT * FROM ' . static::TABLE;
-        return $db->query($sql, static::class);
-    }
+//    public static function findAll()
+//    {
+//        $db = new Db();
+//        $sql = 'SELECT * FROM ' . static::TABLE;
+//        return $db->query($sql, static::class);
+//    }
 
+    /**
+     * Возвращает конкретную запись
+     * Если запись не найдена, возвращает false
+     *
+     * @param $id
+     * @return mixed
+     */
     public static function findById($id)
     {
         $db = new Db();

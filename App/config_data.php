@@ -7,4 +7,5 @@ return [
         'user' => 'root',
         'password' => '123456',
     ],
+    'newsPerPage' => 5,
 ];
