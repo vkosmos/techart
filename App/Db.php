@@ -20,8 +20,9 @@ class Db
         return $this->dbh;
     }
 
-    public function query($sql, $class, $params = [])
+    public function query($sql, $class = 'stdClass', $params = [])
     {
+        //var_dump($class);
         $sth = $this->dbh->prepare($sql);
         $sth->execute($params);
         $res = $sth->fetchAll(\PDO::FETCH_CLASS, $class);

@@ -31,16 +31,8 @@ class Article
     public function getPage($page, $number)
     {
         $db = new Db();
-
-        $start = ($page - 1) * $number + 1;
-        //$finish = $page * $number;
-
-//        var_dump($start);
-//        var_dump($finish);
-//        die;
-
+        $start = ($page - 1) * $number;
         $sql = 'SELECT * FROM ' . static::TABLE . ' ORDER BY idate DESC LIMIT ' . $start . ', ' . $number;
-        //echo $sql;
         return $db->query($sql, static::class);
     }
     

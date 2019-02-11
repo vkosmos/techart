@@ -20,6 +20,19 @@ abstract class Model
 //        return $db->query($sql, static::class);
 //    }
 
+    public function getCount()
+    {
+        $db = new Db();
+        $sql = 'SELECT count(*) as number FROM ' . static::TABLE;
+        $res = $db->query($sql);
+
+        if (count($res) > 0){
+            return $res[0];
+        } else {
+            return false;
+        }
+    }
+
     /**
      * Возвращает конкретную запись
      * Если запись не найдена, возвращает false
@@ -41,8 +54,7 @@ abstract class Model
 
         if (count($res) > 0){
             return $res[0];
-        }
-        else {
+        } else {
             return false;
         }
     }
