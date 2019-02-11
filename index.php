@@ -2,11 +2,9 @@
 
 require __DIR__ . '/autoload.php';
 
-$data = \App\Models\Article::findAll();
-var_dump($data);
 
-$users = \App\Models\User::findAll();
-var_dump($users);
+$view = new \App\View();
 
-//$article = \App\Models\Article::findById(3);
-//var_dump($article);
+$view->news = \App\Models\Article::findAll();
+
+$view->display( __DIR__ . '/templates/index.php');

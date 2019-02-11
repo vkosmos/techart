@@ -1,15 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: magic
- * Date: 11.02.2019
- * Time: 12:29
- */
 
 namespace App\Models;
 
 
-use App\Db;
 use App\Model;
 
 class Article
@@ -18,6 +11,8 @@ class Article
     public const TABLE = 'news';
 
     public $title;
+    public $announce;
     public $content;
+    public $idate;
 
 }
