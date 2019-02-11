@@ -6,6 +6,8 @@ abstract class Model
 {
     public $id;
 
+    public const TABLE = 'news';
+
     /**
      * Возвращает все записи
      *
