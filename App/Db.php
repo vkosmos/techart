@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Errors\DbException;
+
 class Db
 {
 
@@ -11,11 +13,15 @@ class Db
     {
         $config = Config::getInstance();
 
-        $this->dbh = new \PDO(
-            'mysql:host='.$config->getData()['db']['host'] . ';dbname=' . $config->getData()['db']['dbname'],
-            $config->getData()['db']['user'],
-            $config->getData()['db']['password']
+        try {
+            $this->dbh = new \PDO(
+                'mysql:host=' . $config->getData()['db']['host'] . ';dbname=' . $config->getData()['db']['dbname'],
+                $config->getData()['db']['user'],
+                $config->getData()['db']['password']
             );
+        }catch (\PDOException $er){
+            throw new DbException('Ошибка подключения к БД.');
+        }
 
         return $this->dbh;
     }
