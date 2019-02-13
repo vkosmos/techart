@@ -6,19 +6,23 @@ namespace App;
 class Config
 {
     protected static $_instance = null;
-    public static $data = [];
+    protected static $data = [];
 
-    public static function getData()
+    public static function getInstance()
     {
-        if (self::$_instance === null){
+        if (null === self::$_instance){
             self::$_instance = new self;
         }
-        return self::$data;
-
+        return self::$_instance;
     }
 
     protected function __construct()
     {
         self::$data = include __DIR__ . '\config_data.php';
+    }
+
+    public function getData()
+    {
+        return self::$data;
     }
 }

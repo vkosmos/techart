@@ -28,7 +28,8 @@ class NewsController
      */
     public function __invoke()
     {
-        $newsPerPage = (Config::getData())['newsPerPage'];
+        $config = Config::getInstance();
+        $newsPerPage = ($config->getData()['newsPerPage']);
         $newsNumber = (int)(Article::getCount())->number;
         $pagesNumber = ceil($newsNumber / $newsPerPage);
 
@@ -38,9 +39,9 @@ class NewsController
             $page = 1;
         }
 
-        $this->view = new View();
         $this->view->news = Article::getPage($page, $newsPerPage);
         $this->view->pagesNumber = $pagesNumber;
+        $this->view->currentPage = $page;
 
         $this->view->display(__DIR__ . '/../../templates/news.php');
     }

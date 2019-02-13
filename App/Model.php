@@ -4,21 +4,10 @@ namespace App;
 
 abstract class Model
 {
+    const TABLE = '';
+
     public $id;
 
-    const TABLE = 'news';
-
-    /**
-     * Возвращает все записи
-     *
-     * @return array
-     */
-//    public static function findAll()
-//    {
-//        $db = new Db();
-//        $sql = 'SELECT * FROM ' . static::TABLE;
-//        return $db->query($sql, static::class);
-//    }
 
     public function getCount()
     {

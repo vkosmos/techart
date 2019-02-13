@@ -28,6 +28,14 @@ class Article
         return $db->query($sql, static::class);
     }
 
+    /**
+     * Возвращает новости для текущей страницы
+     * исходя из номера страницы $page и количества отображаемых новостей $number
+     *
+     * @param $page
+     * @param $number
+     * @return array
+     */
     public function getPage($page, $number)
     {
         $db = new Db();

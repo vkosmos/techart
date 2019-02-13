@@ -9,12 +9,12 @@ class Db
 
     public function __construct()
     {
-        $config = Config::getData();
+        $config = Config::getInstance();
 
         $this->dbh = new \PDO(
-            'mysql:host='.$config['db']['host'] . ';dbname=' . $config['db']['dbname'],
-            $config['db']['user'],
-            $config['db']['password']
+            'mysql:host='.$config->getData()['db']['host'] . ';dbname=' . $config->getData()['db']['dbname'],
+            $config->getData()['db']['user'],
+            $config->getData()['db']['password']
             );
 
         return $this->dbh;
@@ -22,11 +22,9 @@ class Db
 
     public function query($sql, $class = 'stdClass', $params = [])
     {
-        //var_dump($class);
         $sth = $this->dbh->prepare($sql);
         $sth->execute($params);
-        $res = $sth->fetchAll(\PDO::FETCH_CLASS, $class);
-        return $res;
+        return $sth->fetchAll(\PDO::FETCH_CLASS, $class);
     }
 
     public function execute($sql, $params = [])

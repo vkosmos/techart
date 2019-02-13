@@ -23,7 +23,6 @@ class ArticleController
             die('Такой страницы не существует.');
         }
 
-        $this->view = new View();
         $this->view->article = Article::findById($id);
         if (false == $this->view->article){
             die('Такой страницы не существует.');
